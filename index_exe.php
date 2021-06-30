@@ -27,16 +27,8 @@
 				$_SESSION['nombre']=$nombre;
 				$_SESSION['privilegios'] = $privilegios;
 		
-				switch ($privilegios) {
-					case 1:
-						//header("location: /admin/home.php");
-						echo "eres user";
-						break;
-					case 2:
-						//header("location: /user/tabla_user.php");
-						echo "eres admin";
-						break;
-				}
+				//Se envía a comprobación de permisos
+				header("location: sistema/seguridad_general.php");
 			}else{
 				echo "<script>alert('Datos incorrectos!'); window.location='/index.html';</script>";
 			}
