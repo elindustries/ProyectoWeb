@@ -13,6 +13,7 @@ if (mysqli_num_rows($result) > 0) {
 <html>
 
 	<head>
+		<meta charset="utf-8">
 		<title>Productos</title>
 
 		<!-- Bootstrap CSS -->
@@ -31,6 +32,9 @@ if (mysqli_num_rows($result) > 0) {
 			<h1>Productos Registrados</h1>
 			</header>
 
+			<a class="btn btn-success" href="insertar_producto_form.php">Agregar Producto</a>
+			<a class= "btn btn-danger" href="../cerrar_sesion.php">Cerrar Sesión</a>
+			
 			<table table id="example" class="table table-striped" style="width:100%">
 				<thead>
 					<tr>
@@ -68,8 +72,6 @@ if (mysqli_num_rows($result) > 0) {
 				?>
 				</tbody>
 			</table>
-			<a class="btn btn-success" href="añadir_form.php">Agregar Usuario</a>
-			<a class= "btn btn-danger" href="../cerrar_sesion.php">Cerrar Sesión</a>
 		<?php
 	} else {
 		echo "No existen registros";
