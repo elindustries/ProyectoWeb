@@ -1,9 +1,11 @@
 <?php include('../../db/db.php');
 include('seguridad_admin.php');
 
-$sql = "SELECT * from proveedores";
-$result = mysqli_query($conn, $sql);
+$sql_proveedores = "SELECT * from proveedores";
+$resultado_proveedores = mysqli_query($conn, $sql_proveedores);
 
+$sql_categorias = "SELECT * from categorias";
+$resultado_categorias = mysqli_query($conn, $sql_categorias);
 
 ?>
 <!DOCTYPE html>
@@ -27,18 +29,18 @@ $result = mysqli_query($conn, $sql);
                     <label>Proveedor</label>
                     <div class="input-group mb-3">
                         <select name="proveedor" class="form-control"  required>
-                            <option selected disabled>Seleccionar proveedor</option>
+                            <option selected disabled>-Seleccionar proveedor-</option>
                             <!-- Lectura de proveedores -->
                             <?php
-                            while ($row = mysqli_fetch_assoc($result)){
+                            while ($row_proveedores = mysqli_fetch_assoc($resultado_proveedores)){
                             ?>
-                                <option value="<?=$row['id_proveedor']?>"><?=$row['nombre_proveedor']?></option>
+                                <option value="<?=$row_proveedores['id_proveedor']?>"><?=$row_proveedores['nombre_proveedor']?></option>
                             <?php
                             }
                             ?>
                         </select>
                         <div class="input-group-append">
-                            <a href="insertar_categoria_form.php" class="btn btn-outline-secondary" type="button">Insertar categoría</a>
+                            <a href="insertar_proveedor_form.php" class="btn btn-outline-secondary" type="button">Insertar proveedor</a>
                         </div>
                     </div>
 
@@ -53,19 +55,24 @@ $result = mysqli_query($conn, $sql);
                     </div>
 
                     <!-- Categoría -->
-                    <div class="mb-3">
-                        <label>Categoría</label>
+                    <label>Categoría</label>
+                    <div class="input-group mb-3">
+                        
                         <select name="categoria" class="form-control"  required>
-                            <option selected disabled>Seleccionar categoría</option>
-                            <!-- Lectura de proveedores -->
+                            <option selected disabled>-Seleccionar categoría-</option>
+                            <!-- Lectura de categorías -->
                             <?php
-                            while ($row = mysqli_fetch_assoc($result)){
+                            while ($row_categorias = mysqli_fetch_assoc($resultado_categorias)){
                             ?>
-                                <option value="<?=$row['id_proveedor']?>"><?=$row['nombre_proveedor']?></option>
+                                <option value="<?=$row_categorias['id_categoria']?>"><?=$row_categorias['nombre_categoria']?></option>
                             <?php
                             }
+                            mysqli_close($conn);
                             ?>
                         </select>
+                        <div class="input-group-append">
+                            <a href="insertar_categoria_form.php" class="btn btn-outline-secondary" type="button">Insertar categoría</a>
+                        </div>
                     </div>
 
                     <!-- Botón de registro -->
