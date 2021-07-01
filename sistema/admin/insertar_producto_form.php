@@ -14,7 +14,7 @@ $result = mysqli_query($conn, $sql);
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
             
         <meta charset="utf-8">
-        <title>Registro</title>
+        <title>Insertar Producto</title>
     </head>
 
     <body>
@@ -23,34 +23,49 @@ $result = mysqli_query($conn, $sql);
             <h2>Ingrese los datos del producto</h2>
             <div class="container">
                 <form id="form1" method="POST" action="insertar_producto_exe.php" class="needs-validation">
-                    <div class="mb-3">
-                        <label>Proveedor</label>
-                        <select name="proveedor" class="form-control" value="">
-                        <!-- Lectura de proveedores -->
-                        <?php
-                        while ($row = mysqli_fetch_assoc($result)){
-                        ?>
-                            <option value="<?=$row['id_proveedor']?>"><?=$row['nombre_proveedor']?></option>
-                        <?php
-                        }
-                        ?>
+                    <!-- Proveedores -->
+                    <label>Proveedor</label>
+                    <div class="input-group mb-3">
+                        <select name="proveedor" class="form-control"  required>
+                            <option selected disabled>Seleccionar proveedor</option>
+                            <!-- Lectura de proveedores -->
+                            <?php
+                            while ($row = mysqli_fetch_assoc($result)){
+                            ?>
+                                <option value="<?=$row['id_proveedor']?>"><?=$row['nombre_proveedor']?></option>
+                            <?php
+                            }
+                            ?>
                         </select>
+                        <div class="input-group-append">
+                            <a href="insertar_categoria_form.php" class="btn btn-outline-secondary" type="button">Insertar categoría</a>
+                        </div>
                     </div>
 
                     <div class="mb-3">
-                        <label>Apellido Paterno:</label>
-                        <input type="text" name="apellidop" class="form-control" required>
+                        <label>Descipción</label>
+                        <input type="text" name="descripcion" class="form-control" required>
                     </div>
 
                     <div class="mb-3">
-                        <label>Apellido Materno:</label>
-                        <input type="text" name="apellidom" class="form-control" required>
+                        <label>Precio</label>
+                        <input type="number" name="precio" class="form-control" required>
                     </div>
 
-                    <!-- Nickname -->
+                    <!-- Categoría -->
                     <div class="mb-3">
-                        <label>Usuario</label>
-                        <input type="text" name="nickname" class="form-control" required>
+                        <label>Categoría</label>
+                        <select name="categoria" class="form-control"  required>
+                            <option selected disabled>Seleccionar categoría</option>
+                            <!-- Lectura de proveedores -->
+                            <?php
+                            while ($row = mysqli_fetch_assoc($result)){
+                            ?>
+                                <option value="<?=$row['id_proveedor']?>"><?=$row['nombre_proveedor']?></option>
+                            <?php
+                            }
+                            ?>
+                        </select>
                     </div>
 
                     <!-- Botón de registro -->
@@ -59,7 +74,7 @@ $result = mysqli_query($conn, $sql);
                     </div>
                     <!-- Botón de regreso -->
                     <div class="mb-3">
-                        <a class="btn btn-secondary" href="index.html" role="button">Inicio</a>
+                        <a class="btn btn-secondary" href="tabla_productos.php" role="button">Atrás</a>
                     </div>
                 </form>
 

@@ -52,7 +52,6 @@ if (mysqli_num_rows($result) > 0) {
 
 
 				while ($row = mysqli_fetch_assoc($result)) {
-					//$newFecha = date("d/m/Y", strtotime($row["fecha_nacimiento"]));
 				?>
 					<tr>
 						<td><?= $row["id_producto"] ?></td>
