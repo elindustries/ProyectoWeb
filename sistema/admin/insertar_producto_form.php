@@ -1,10 +1,10 @@
 <?php include('../../db/db.php');
 include('seguridad_admin.php');
 
-$sql_proveedores = "SELECT * from proveedores";
+$sql_proveedores = "SELECT * from proveedores ORDER BY nombre_proveedor asc";
 $resultado_proveedores = mysqli_query($conn, $sql_proveedores);
 
-$sql_categorias = "SELECT * from categorias";
+$sql_categorias = "SELECT * from categorias order by nombre_categoria asc";
 $resultado_categorias = mysqli_query($conn, $sql_categorias);
 
 ?>
