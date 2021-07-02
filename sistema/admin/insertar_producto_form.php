@@ -26,6 +26,7 @@ $resultado_categorias = mysqli_query($conn, $sql_categorias);
         <h1>Abarrotes Zavala</h1>
         <h2>Ingrese los datos del producto</h2>
         <div class="container">
+            <!-- Formulario -->
             <form method="POST" action="insertar_producto_exe.php" enctype="multipart/form-data" class="needs-validation">
 
                 <!-- Proveedores -->
@@ -43,38 +44,12 @@ $resultado_categorias = mysqli_query($conn, $sql_categorias);
                         ?>
                     </select>
                     <div class="input-group-append">
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <!-- Boton Modal Proveedor -->
+                        <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             Añadir proveedor
                         </button>
 
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Ingrese los datos del proveedor</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form class="needs-validation">
-                                            <div class="mb-3">
-                                                <label for="recipient-name" class="col-form-label">Recipient:</label>
-                                                <input type="text" class="form-control" id="recipient-name">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="message-text" class="col-form-label">Message:</label>
-                                                <textarea class="form-control" id="message-text"></textarea>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Send message</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
 
@@ -135,7 +110,40 @@ $resultado_categorias = mysqli_query($conn, $sql_categorias);
 
             </form>
             <!-- Button trigger modal -->
+            <!-- Modal para insertar proveedor -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Ingrese los datos del proveedor</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Formulario -->
+                            <form class="needs-validation" method="POST" action="insertar_proveedor_modal_exe.php">
+                                <div class="mb-3">
+                                    <label class="col-form-label">Nombre:</label>
+                                    <input name="nombre_proveedor" type="text" class="form-control"  required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="col-form-label">Teléfono:</label>
+                                    <input name="telefono_proveedor" type="number" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="col-form-label">Dirección:</label>
+                                    <input name="direccion_proveedor" type="text" class="form-control" required>
+                                </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-primary">Aceptar</button>
+                        </div>
+                        </form>
+                        <!-- Formulario -->
 
+                    </div>
+                </div>
+            </div>
         </div>
         <br>
         <footer class="bg-light text-center text-lg-start">
