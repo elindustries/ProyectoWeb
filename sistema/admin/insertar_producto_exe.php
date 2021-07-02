@@ -21,11 +21,14 @@
         $src = $destino.$img_producto;
     }
 
-    $sql = "INSERT INTO usuarios (nombre,apellidos,matricula,sexo,estado_civil,fecha_nacimiento,carrera,fecha_registro,usuario,password,privilegio) 
-    VALUES ('$nombre','$apellidos','$matricula','$sexo','$estadoCivil','$fechaNacimiento','$carrera','$fecha_registro','$usuario','$password','$privilegios')";
+    $sql_insertar_producto = "INSERT INTO productos 
+    VALUES (NULL, '$descripcion','$precio','$categoria','$proveedor','$img_producto')";
 
-if (mysqli_query($conn, $sql)) {
-    echo "<script>alert('Registro insertado correctamente'); window.location='home.php';</script>";
+if (mysqli_query($conn, $sql_insertar_producto)) {
+  if($nombre_foto != ''){
+    move_uploaded_file($url_temporal, $src);
+  }
+    echo "<script>alert('Registro insertado correctamente'); window.location='tabla_productos.php';</script>";
   } else {
     echo "<script>alert('Error insertando registro'); window.history.go(-1);</script>";
   }

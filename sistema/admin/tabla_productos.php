@@ -57,7 +57,7 @@ if (mysqli_num_rows($result) > 0) {
 						<td><?= $row["id_producto"] ?></td>
 						<td><?= $row["descripción_producto"] ?></td>
 						<td><?= $row["precio_producto"] ?></td>
-						<td><?= $row["img_producto"] ?></td>
+						<td><img src="../img_productos/<?= $row["img_producto"] ?>" height="200" width="200"></td>
 						<td><?= $row["nombre_proveedor"] ?></td>
 						<td><?= $row["nombre_categoria"] ?></td>
 						<!-- ?id= Se usa para pasar por get una variable de nombre id y despues del signo = se coloca el valor de la variable, en este caso se tomará de la variable $row['id'] -->
