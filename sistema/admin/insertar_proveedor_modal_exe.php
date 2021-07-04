@@ -1,7 +1,7 @@
 <?php
     include('../../db/db.php');
-print_r($_POST);
-exit;
+//print_r($_POST);
+//exit;
 
     //recolección de los datos
     $nombre_proveedor = $_POST["nombre_proveedor"];
